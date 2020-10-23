@@ -57,6 +57,9 @@ class ball():
         if(self.x + self.r > 800 or self.x - self.r < 0 or self.y + self.r > 600 or self.y - self.r < 0):
             balls.remove(self)
             canv.delete(self.id)
+            global points
+            points-=1
+            canv.itemconfig(p, text = str(points))
         else:    
             self.x += self.vx
             self.y -= self.vy
@@ -119,8 +122,8 @@ class gun():
 
     def power_up(self):
         if self.f2_on:
-            if self.f2_power < 100:
-                self.f2_power += 1
+            if self.f2_power < 70:
+                self.f2_power += 1*z/0.01
             canv.itemconfig(self.id, fill='orange')
         else:
             canv.itemconfig(self.id, fill='black')
